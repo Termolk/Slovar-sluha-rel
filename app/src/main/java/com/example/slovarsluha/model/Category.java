@@ -1,6 +1,7 @@
 package com.example.slovarsluha.model;
 
 public class Category {
+
     int id;
     String title;
 
