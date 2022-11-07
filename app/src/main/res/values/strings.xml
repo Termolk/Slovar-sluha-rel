@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Slovar sluha</string>
+    <string name="search">Поисковик</string>
+    <string name="Nature">Природа</string>
+    <string name="Animals">Животные</string>
+    <string name="Transport">Транспорт</string>
+    <string name="Piro">Пиротехника</string>
 </resources>
