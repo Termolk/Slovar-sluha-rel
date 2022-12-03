@@ -2,16 +2,14 @@ package com.example.slovarsluha;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.slovarsluha.adapter.CategoryItemsAdapter;
@@ -19,18 +17,18 @@ import com.example.slovarsluha.model.CategoryItems;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
-public class ListActivity extends AppCompatActivity implements RecyclerViewInterface{
+public class SearchActivity extends AppCompatActivity implements RecyclerViewInterface{
+    List<CategoryItems> categoryItemsList = new ArrayList<>();
     RecyclerView categoryRecycler;
     CategoryItemsAdapter categoryItemsAdapter;
-    List<CategoryItems> categoryItemsList = new ArrayList<>();
-    TextView textViewListName;
-    ImageView imageView111;
+    EditText editTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list);
+        setContentView(R.layout.activity_search);
 
 
 
@@ -41,7 +39,7 @@ public class ListActivity extends AppCompatActivity implements RecyclerViewInter
                 .setNegativeButton("ГОТОВЫЕ КУРСОВЫЕ", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(ListActivity.this, "КУРСОВУЮ СДЕЛАЛ ЛОГАЧЕВ СЕРГЕЙ", Toast.LENGTH_LONG).show();
+                        Toast.makeText(SearchActivity.this, "КУРСОВУЮ СДЕЛАЛ ЛОГАЧЕВ СЕРГЕЙ", Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -53,44 +51,50 @@ public class ListActivity extends AppCompatActivity implements RecyclerViewInter
 
 
 
-        textViewListName = findViewById(R.id.textViewListName);
 
-        Bundle arguments = getIntent().getExtras();
-        String name = arguments.get("name").toString();
 
-        Intent intent = new Intent(this, InfoActivity3.class);
 
-        imageView111 = findViewById(R.id.imageView111);
-
-        imageView111.setOnClickListener(new View.OnClickListener() {
+        editTextView = findViewById(R.id.editTextView);
+        editTextView.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View view) {
-                startActivity(intent);
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
             }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+
+
         });
 
-        switch (name){
-            case "Природа":
-                categoryItemsList = Data.natureList;
-                break;
-            case "Животные":
-                categoryItemsList = Data.animalsList;
-                break;
-            case "Транспорт":
-                categoryItemsList = Data.transportList;
-                break;
-            case "Пиротехника":
-                categoryItemsList = Data.piroList;
-                break;
-        }
-
-        textViewListName.setText(name);
+        categoryItemsList.addAll(Data.animalsList);
+        categoryItemsList.addAll(Data.natureList);
+        categoryItemsList.addAll(Data.transportList);
+        categoryItemsList.addAll(Data.piroList);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
-        categoryRecycler = findViewById(R.id.recyclerViewList);
+        categoryRecycler = findViewById(R.id.recyclerViewList1);
         categoryRecycler.setLayoutManager(layoutManager);
         categoryItemsAdapter = new CategoryItemsAdapter(this, categoryItemsList, this);
         categoryRecycler.setAdapter(categoryItemsAdapter);
+    }
+
+    private void filter(String text){
+        ArrayList<CategoryItems> filteredList = new ArrayList<>();
+
+        for (CategoryItems item : categoryItemsList){
+            if (item.getName().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(item);
+            }
+        }
+        categoryItemsAdapter.filterList(filteredList);
     }
 
     @Override
@@ -101,7 +105,6 @@ public class ListActivity extends AppCompatActivity implements RecyclerViewInter
         intent.putExtra("UPPER", categoryItemsList.get(position).getUpper());
         intent.putExtra("DOWNER", categoryItemsList.get(position).getDowner());
         intent.putExtra("URL", categoryItemsList.get(position).getUrlVideo());
-
 
         startActivity(intent);
     }

@@ -1,11 +1,13 @@
 package com.example.slovarsluha;
 
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import pl.droidsonroids.gif.GifImageView;
 
@@ -20,6 +22,27 @@ public class MainActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("ВНИМАНИЕ!!!!!!!")
+                .setMessage("!ДАННАЯ КУРСОВАЯ СДЕЛАНА ПОД ЗАКАЗ ДЛЯ ВЫПОЛНЕНИЯ ДЗ!")
+                .setCancelable(false)
+                .setNegativeButton("ГОТОВЫЕ КУРСОВЫЕ", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(MainActivity2.this, "КУРСОВУЮ СДЕЛАЛИ ПОД ЗАКАЗ", Toast.LENGTH_LONG).show();
+                    }
+                });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+
+
+
 
         textViewNameCategory = findViewById(R.id.textViewNameCategory);
         textViewUpperCategory = findViewById(R.id.textViewUpperCategory);
@@ -58,6 +81,9 @@ public class MainActivity2 extends AppCompatActivity {
                 break;
             case "4":
                 gifImageView.setImageResource(R.drawable.metro);
+                break;
+            case"5":
+                gifImageView.setImageResource(R.drawable.piro);
                 break;
             default:
                 gifImageView.setImageResource(R.drawable.grom);

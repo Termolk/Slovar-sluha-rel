@@ -13,6 +13,7 @@ import com.example.slovarsluha.R;
 import com.example.slovarsluha.RecyclerViewInterface;
 import com.example.slovarsluha.model.CategoryItems;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryItemsAdapter extends RecyclerView.Adapter<CategoryItemsAdapter.CategoryItemsViewHolder> {
@@ -45,6 +46,12 @@ public class CategoryItemsAdapter extends RecyclerView.Adapter<CategoryItemsAdap
         return categoryItemsList.size();
     }
 
+    public void filterList(ArrayList<CategoryItems> filteredList) {
+        categoryItemsList = filteredList;
+        notifyDataSetChanged();
+    }
+
+
     public static final class CategoryItemsViewHolder extends RecyclerView.ViewHolder {
 
         TextView textViewNameItems;
@@ -56,7 +63,6 @@ public class CategoryItemsAdapter extends RecyclerView.Adapter<CategoryItemsAdap
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Log.d("DEBUG123","Я существую");
                     if (recyclerViewInterface != null){
                         int position = getAdapterPosition();
 
