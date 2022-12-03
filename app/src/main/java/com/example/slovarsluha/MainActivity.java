@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        System.out.println(Data.animalsList.get(0).getName() + " dfdfdfdfdfdfdfdf");
+
 
         initViews();
         setClickListenersOnViews();
@@ -54,11 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void setCategoryRecycler(List<Category> categoryList) {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
 
-        categoryRecycler = findViewById(R.id.recyclerViewCategories);
-        categoryRecycler.setLayoutManager(layoutManager);
 
-        categoryAdapter = new CategoryAdapter(this, categoryList);
-        categoryRecycler.setAdapter(categoryAdapter);
     }
 
 

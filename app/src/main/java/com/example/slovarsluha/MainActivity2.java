@@ -32,7 +32,6 @@ public class MainActivity2 extends AppCompatActivity {
         String upper = getIntent().getStringExtra("UPPER");
         String downer = getIntent().getStringExtra("DOWNER");
         String url = getIntent().getStringExtra("URL");
-        System.out.println(url + "      fgfgfgfgfgfgfgfgfgfgfg");
 
 
         textViewNameCategory.setText(name);
