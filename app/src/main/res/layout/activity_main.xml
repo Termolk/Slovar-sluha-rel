@@ -50,24 +50,32 @@
             android:id="@+id/buttonNature"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/background"
+            android:textColor="@color/white"
             android:text="@string/Nature" />
 
         <Button
             android:id="@+id/buttonAnimals"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/background"
+            android:textColor="@color/white"
             android:text="@string/Animals" />
 
         <Button
             android:id="@+id/buttonTransport"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/background"
+            android:textColor="@color/white"
             android:text="@string/Transport" />
 
         <Button
             android:id="@+id/buttonPiro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/background"
+            android:textColor="@color/white"
             android:text="@string/Piro" />
     </LinearLayout>
 

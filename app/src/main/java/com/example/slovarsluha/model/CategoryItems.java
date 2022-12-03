@@ -1,7 +1,5 @@
 package com.example.slovarsluha.model;
 
-import java.util.ArrayList;
-
 public class CategoryItems {
     int id;
     String name;
