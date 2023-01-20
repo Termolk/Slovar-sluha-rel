@@ -37,27 +37,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("ВНИМАНИЕ!!!!!!!")
-                .setMessage("!ДАННАЯ КУРСОВАЯ СДЕЛАНА ПОД ЗАКАЗ ДЛЯ ВЫПОЛНЕНИЯ ДЗ!")
-                .setCancelable(false)
-                .setNegativeButton("ГОТОВЫЕ КУРСОВЫЕ", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(MainActivity.this, "КУРСОВУЮ СДЕЛАЛ ЛОГАЧЕВ СЕРГЕЙ", Toast.LENGTH_LONG).show();
-                    }
-                });
-
-        AlertDialog dialog = builder.create();
-        dialog.show();
-
-
-
-
         initViews();
         setClickListenersOnViews();
     }

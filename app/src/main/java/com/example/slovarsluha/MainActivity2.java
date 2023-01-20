@@ -23,27 +23,6 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-
-
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("ВНИМАНИЕ!!!!!!!")
-                .setMessage("!ДАННАЯ КУРСОВАЯ СДЕЛАНА ПОД ЗАКАЗ ДЛЯ ВЫПОЛНЕНИЯ ДЗ!")
-                .setCancelable(false)
-                .setNegativeButton("ГОТОВЫЕ КУРСОВЫЕ", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(MainActivity2.this, "КУРСОВУЮ СДЕЛАЛИ ПОД ЗАКАЗ", Toast.LENGTH_LONG).show();
-                    }
-                });
-
-        AlertDialog dialog = builder.create();
-        dialog.show();
-
-
-
-
-
         textViewNameCategory = findViewById(R.id.textViewNameCategory);
         textViewUpperCategory = findViewById(R.id.textViewUpperCategory);
         textViewDownerCategory = findViewById(R.id.textViewDownerCategory);

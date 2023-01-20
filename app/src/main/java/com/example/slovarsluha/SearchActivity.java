@@ -30,31 +30,8 @@ public class SearchActivity extends AppCompatActivity implements RecyclerViewInt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("ВНИМАНИЕ!!!!!!!")
-                .setMessage("!ДАННАЯ КУРСОВАЯ СДЕЛАНА ПОД ЗАКАЗ ДЛЯ ВЫПОЛНЕНИЯ ДЗ!")
-                .setCancelable(false)
-                .setNegativeButton("ГОТОВЫЕ КУРСОВЫЕ", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(SearchActivity.this, "КУРСОВУЮ СДЕЛАЛ ЛОГАЧЕВ СЕРГЕЙ", Toast.LENGTH_LONG).show();
-                    }
-                });
-
-        AlertDialog dialog = builder.create();
-        dialog.show();
-
-
-
-
-
-
-
-
-
         editTextView = findViewById(R.id.editTextView);
+
         editTextView.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -70,8 +47,6 @@ public class SearchActivity extends AppCompatActivity implements RecyclerViewInt
             public void afterTextChanged(Editable editable) {
                 filter(editable.toString());
             }
-
-
         });
 
         categoryItemsList.addAll(Data.animalsList);

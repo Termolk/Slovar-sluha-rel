@@ -33,26 +33,6 @@ public class ListActivity extends AppCompatActivity implements RecyclerViewInter
         setContentView(R.layout.activity_list);
 
 
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("ВНИМАНИЕ!!!!!!!")
-                .setMessage("!ДАННАЯ КУРСОВАЯ СДЕЛАНА ПОД ЗАКАЗ ДЛЯ ВЫПОЛНЕНИЯ ДЗ!")
-                .setCancelable(false)
-                .setNegativeButton("ГОТОВЫЕ КУРСОВЫЕ", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(ListActivity.this, "КУРСОВУЮ СДЕЛАЛ ЛОГАЧЕВ СЕРГЕЙ", Toast.LENGTH_LONG).show();
-                    }
-                });
-
-        AlertDialog dialog = builder.create();
-        dialog.show();
-
-
-
-
-
-
         textViewListName = findViewById(R.id.textViewListName);
 
         Bundle arguments = getIntent().getExtras();
